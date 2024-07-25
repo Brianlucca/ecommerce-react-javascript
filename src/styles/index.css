@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --input-bg: #F5F5F5;
+  --bg-black: #000000;
+  --text-white: #FAFAFA;
+  --text-black: #000000;
+  --color-gray: #7d8184;
+  --qrcode-height: 4.75rem;
+  --qrcode-width: 4.75rem;
+  --image-account-height: 50rem;
+  --image-account-width: 48rem;
+  --image-account-padding: 4.60rem;
+}
