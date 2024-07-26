@@ -1,3 +1,4 @@
+import { Heart, HeartCrack } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Footer from "../../components/footer";
@@ -6,7 +7,6 @@ import LightningProducts from "../../components/lightningProducts";
 import { CartContext } from "../../context/cartContext";
 import { FavoriteContext } from "../../context/favoriteContext";
 import { fetchProductDetailsById } from "../../service/detailsProductsApi";
-import { Heart, HeartCrack } from "lucide-react";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -16,7 +16,8 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [currentImage, setCurrentImage] = useState("");
   const { addToCart } = useContext(CartContext);
-  const { addToFavorites, removeFromFavorites, favorites } = useContext(FavoriteContext);
+  const { addToFavorites, removeFromFavorites, favorites } =
+    useContext(FavoriteContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,8 +87,8 @@ function ProductDetails() {
                   ))}
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl font-semibold mb-4 text-gray-800">
+            <div className="lg:w-1/2 flex-wrap">
+              <h2 className="text-2xl  lg:text-3xl font-semibold mb-4 text-gray-800">
                 {product.title}
               </h2>
               <div>
@@ -119,19 +120,19 @@ function ProductDetails() {
                 </button>
                 <div className="flex items-center gap-4 ml-4">
                   <button
-                    className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                    className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-1 px-1 text-xs rounded lg:px-4 lg:py-2 lg:text-base"
                     onClick={handleBuyNow}
                   >
                     Comprar agora
                   </button>
                   {isFavorite ? (
-                    <HeartCrack 
-                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800"
+                    <HeartCrack
+                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-8 md:h-8"
                       onClick={handleRemoveFromFavorites}
                     />
                   ) : (
                     <Heart
-                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800"
+                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-8 md:h-8"
                       onClick={handleAddToFavorites}
                     />
                   )}
@@ -142,7 +143,7 @@ function ProductDetails() {
                   Frete Grátis
                 </div>
               )}
-              <div className="border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
+              <div className="justify-center border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
                 <p className="font-medium mb-2 text-gray-800">
                   O que você precisa saber sobre o produto:
                 </p>
@@ -150,8 +151,10 @@ function ProductDetails() {
                   <ul className="space-y-1">
                     {product.attributes.map((attribute, index) => (
                       <li key={index} className="text-sm text-gray-700">
-                        <strong>{attribute.name}:</strong>{" "}
-                        {attribute.value_name}
+                        <strong>{attribute.name}:</strong>
+                        <p className="break-words word-break break-all overflow-wrap overflow-hidden">
+                          {attribute.value_name}
+                        </p>
                       </li>
                     ))}
                   </ul>
