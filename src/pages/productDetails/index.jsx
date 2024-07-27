@@ -1,4 +1,4 @@
-import { Heart, HeartCrack, Share2 } from "lucide-react";
+import { Heart, HeartCrack, Share} from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Footer from "../../components/footer";
@@ -57,21 +57,20 @@ function ProductDetails() {
   };
 
   const handleShare = async () => {
-    if (navigator.canShare({ files: [new File([], 'image.jpg')] })) {
+    if (navigator.share) {
       try {
         await navigator.share({
           title: product.title,
-          image: currentImage,
-          text: `${currentImage} Confira este produto na codex space: ${product.title}`,
+          price: product.price,
+          text: `Confira este produto na codex space: ${product.title} R$ ${product.price}:`,
           url: window.location.href,
         });
       } catch (error) {
         console.error("Erro ao compartilhar o produto:", error);
       }
-    } else {
     }
   };
-  
+
   const isFavorite = favorites.some((item) => item.id === product?.id);
 
   return (
@@ -103,6 +102,10 @@ function ProductDetails() {
                   ))}
               </div>
             </div>
+              <Share
+                className="text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-6 md:h-6"
+                onClick={handleShare}
+              />
             <div className="lg:w-1/2 flex-wrap">
               <h2 className="text-2xl  lg:text-3xl font-semibold mb-4 text-gray-800">
                 {product.title}
@@ -143,19 +146,15 @@ function ProductDetails() {
                   </button>
                   {isFavorite ? (
                     <HeartCrack
-                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-8 md:h-8"
+                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-6 md:h-6"
                       onClick={handleRemoveFromFavorites}
                     />
                   ) : (
                     <Heart
-                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-8 md:h-8"
+                      className="ml-2 text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-6 md:h-6"
                       onClick={handleAddToFavorites}
                     />
                   )}
-                  <Share2
-                    className="cursor-pointer text-gray-600 hover:text-red-800"
-                    onClick={handleShare}
-                  />
                 </div>
               </div>
               {product.shipping && product.shipping.free_shipping && (
@@ -163,7 +162,7 @@ function ProductDetails() {
                   Frete Grátis
                 </div>
               )}
-              <div className="justify-center border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
+              <div className=" border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
                 <p className="font-medium mb-2 text-gray-800">
                   O que você precisa saber sobre o produto:
                 </p>
