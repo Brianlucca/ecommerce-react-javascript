@@ -1,12 +1,20 @@
 import { HeartCrack } from "lucide-react";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { FavoriteContext } from "../../context/favoriteContext";
 
 function Favorites() {
   const { favorites, removeFromFavorites } = useContext(FavoriteContext);
+  const navigate = useNavigate()
+
+  const isLoggedin = localStorage.getItem("login") === "true";
+  useEffect(() => {
+    if (!isLoggedin) {
+      navigate("/signup");
+    }
+  }, [isLoggedin, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
