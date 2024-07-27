@@ -1,5 +1,6 @@
-import { Heart, HeartCrack } from "lucide-react";
+import { Heart, HeartCrack, Share2 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
@@ -56,10 +57,43 @@ function ProductDetails() {
     removeFromFavorites(product.id);
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: product.title,
+          text: `Confira este produto na codex space: ${product.title}`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.error("Erro ao compartilhar o produto:", error);
+      }
+    }
+  };
+
   const isFavorite = favorites.some((item) => item.id === product?.id);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
+      <Helmet>
+        <title>{product ? product.title : "Carregando..."}</title>
+        <meta property="og:title" content={product ? product.title : ""} />
+        <meta
+          property="og:description"
+          content={product ? product.description : ""}
+        />
+        <meta property="og:image" content={currentImage} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={product ? product.title : ""} />
+        <meta
+          name="twitter:description"
+          content={product ? product.description : ""}
+        />
+        <meta name="twitter:image" content={currentImage} />
+        <meta name="twitter:url" content={window.location.href} />
+      </Helmet>
       <Header />
       <div className="flex-grow container mx-auto px-4 py-8">
         {loading ? (
@@ -136,6 +170,10 @@ function ProductDetails() {
                       onClick={handleAddToFavorites}
                     />
                   )}
+                  <Share2
+                    className="cursor-pointer text-gray-600 hover:text-red-800"
+                    onClick={handleShare}
+                  />
                 </div>
               </div>
               {product.shipping && product.shipping.free_shipping && (
