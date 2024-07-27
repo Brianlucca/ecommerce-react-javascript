@@ -57,20 +57,21 @@ function ProductDetails() {
   };
 
   const handleShare = async () => {
-    if (navigator.share) {
+    if (navigator.canShare({ files: [new File([], 'image.jpg')] })) {
       try {
         await navigator.share({
           title: product.title,
           image: currentImage,
-          text:`${currentImage} Confira este produto na codex space: ${product.title}`,
+          text: `${currentImage} Confira este produto na codex space: ${product.title}`,
           url: window.location.href,
         });
       } catch (error) {
         console.error("Erro ao compartilhar o produto:", error);
       }
+    } else {
     }
   };
-
+  
   const isFavorite = favorites.some((item) => item.id === product?.id);
 
   return (
