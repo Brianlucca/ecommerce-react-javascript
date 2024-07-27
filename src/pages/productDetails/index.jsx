@@ -1,4 +1,4 @@
-import { Heart, HeartCrack, Share} from "lucide-react";
+import { Heart, HeartCrack, Share } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Footer from "../../components/footer";
@@ -102,11 +102,11 @@ function ProductDetails() {
                   ))}
               </div>
             </div>
+            <div className="lg:w-1/2 flex-wrap">
               <Share
-                className="text-gray-600 cursor-pointer hover:text-red-800 w-10 lg:w-6 lg:h-6 md:w-6 md:h-6"
+                className="text-gray-600 cursor-pointer hover:text-red-800 w-6 m-1 lg:w-6 lg:h-6 md:w-6 md:h-6"
                 onClick={handleShare}
               />
-            <div className="lg:w-1/2 flex-wrap">
               <h2 className="text-2xl  lg:text-3xl font-semibold mb-4 text-gray-800">
                 {product.title}
               </h2>
