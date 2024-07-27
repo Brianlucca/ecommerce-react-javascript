@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer";
@@ -30,6 +30,13 @@ function CartProducts() {
   const handleNavigateProducts = () => {
     navigate("/");
   };
+
+  const isLoggedin = localStorage.getItem("login") === "true";
+  useEffect(() => {
+    if (!isLoggedin) {
+      navigate("/signup");
+    }
+  }, [isLoggedin, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
