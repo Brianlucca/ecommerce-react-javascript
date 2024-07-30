@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React from "react";
-import signInValidationSchema from "../../../validation/signInValidation"; 
+import signInValidationSchema from "../../validation/signInValidation"
 import ImgForm from "../../assets/image/image-form.jpeg";
 import Footer from "../../components/footer";
 import Header from "../../components/header";

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router";
-import signUpValidationSchema from "../../../validation/signUpValidation";
+import signUpValidationSchema from "../../validation/signUpValidation"
 import ImgForm from "../../assets/image/image-form.jpeg";
 import Footer from "../../components/footer";
 import Header from "../../components/header";

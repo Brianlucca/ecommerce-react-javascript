@@ -7,20 +7,20 @@ function Products() {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    const fetchProductsData = async () => {
-      try {
-        const productsData = await fetchProducts(null);
-        setProducts(productsData.slice(0, 20));
-      } catch (error) {
-        console.error("Erro ao carregar produtos:", error);
-      }
+    const fetchAndSetProducts = async () => {
+      const productsData = await fetchProducts();
+      setProducts(productsData.slice(0, 20));
     };
 
-    fetchProductsData();
+    fetchAndSetProducts();
+
+    const intervalId = setInterval(fetchAndSetProducts, 604800000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleViewMoreClick = async () => {
-    const productsData = await fetchProducts(null);
+    const productsData = await fetchProducts();
     setProducts(productsData);
     setShowAll(true);
   };
@@ -34,12 +34,14 @@ function Products() {
   return (
     <div>
       <div className="mt-10 m-5 flex justify-center">
-        <p className="text-4xl font-bold text-gray-800 ">Explore Nossos Produtos</p>
+        <p className="text-4xl font-bold text-gray-800 ">
+          Explore Nossos Produtos
+        </p>
       </div>
       <div className="flex justify-center flex-wrap p-5 m-10 shadow-sm bg-white border rounded-xl">
         {products.map((product) => (
-          <Link to={`/${product.title}/${product.id}`}>
-            <div key={product.id} className="relative m-2">
+          <Link to={`/${product.title}/${product.id}`} key={product.id}>
+            <div className="relative m-2">
               <div className="h-56 flex justify-center items-center rounded-md">
                 <img
                   src={product.thumbnail}
@@ -59,7 +61,7 @@ function Products() {
                 </p>
                 <div className="mt-2">
                   <p className="text-gray-800 font-bold">{`R$ ${product.price}`}</p>
-                  {product && product.installments && (
+                  {product.installments && (
                     <p className="text-green-700 font-medium text-sm">{`em ${product.installments.quantity}x  R$ ${product.installments.amount}`}</p>
                   )}
                 </div>
