@@ -1,5 +1,5 @@
-import { Heart, Search, ShoppingCart } from "lucide-react";
-import React, { useContext, useState } from "react";
+import { Heart, Search, ShoppingCart, UserCheck, UserX } from "lucide-react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/image/logo.png";
 import { CartContext } from "../../context/cartContext";
@@ -10,6 +10,14 @@ function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const { totalItems } = useContext(CartContext);
   const { favorites } = useContext(FavoriteContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem("login");
+    if (loginStatus === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleSearch = () => {
     navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
@@ -72,9 +80,9 @@ function Header() {
               />
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-6">
             <div
-              className="relative mr-6 cursor-pointer"
+              className="relative cursor-pointer"
               onClick={handleNavigateFavorites}
             >
               <Heart className="text-blue-300 hover:text-blue-500" />
@@ -93,6 +101,13 @@ function Header() {
                 <span className="absolute -top-2 left-3 bg-blue-800 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
                   {totalItems()}
                 </span>
+              )}
+            </div>
+            <div>
+              {isLoggedIn ? (
+                <UserCheck className="text-green-400" />
+              ) : (
+                <UserX className="text-red-400" />
               )}
             </div>
           </div>

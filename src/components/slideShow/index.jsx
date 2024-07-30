@@ -30,7 +30,7 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="mx-aut">
+    <div className="mx-auto">
       <div className="relative h-96 w-full">
         {slides.map((slide, index) => (
           <div
@@ -40,7 +40,7 @@ const Slideshow = () => {
             }`}
           >
             <img
-              className="w-full h-full object-cover rounded-sm"
+              className="w-full h-full object-cover"
               src={slide.src}
               alt={slide.alt}
             />
