@@ -8,6 +8,7 @@ import ProductDetails from "../pages/productDetails";
 import SearchResults from "../pages/searchResults";
 import SignUp from "../pages/signUp";
 import SignIn from "../pages/signIn";
+import About from "../pages/about";
 
 function RenderRoutes() {
   return (
@@ -21,6 +22,7 @@ function RenderRoutes() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
