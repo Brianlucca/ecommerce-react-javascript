@@ -41,14 +41,14 @@ function CartProducts() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
       <Header />
-      <div className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         {cart.length > 0 ? (
-          <div>
+          <section>
             <h2 className="text-3xl font-semibold mb-4 text-gray-800">
               Carrinho de Compras
             </h2>
             {cart.map((item) => (
-              <div
+              <article
                 key={item.id}
                 className="bg-white p-4 mb-4 rounded-lg shadow-lg flex flex-col md:flex-row items-center"
               >
@@ -93,7 +93,7 @@ function CartProducts() {
                 >
                   Excluir
                 </button>
-              </div>
+              </article>
             ))}
             <div className="bg-white p-4 mt-4 rounded-lg shadow-lg flex flex-col md:flex-row justify-between items-center">
               <div className="mb-4 md:mb-0">
@@ -116,13 +116,13 @@ function CartProducts() {
                 </button>
               </div>
             </div>
-          </div>
+          </section>
         ) : (
           <p className="text-center text-gray-600">
             Nenhum produto no carrinho
           </p>
         )}
-      </div>
+      </main>
       <Footer />
     </div>
   );

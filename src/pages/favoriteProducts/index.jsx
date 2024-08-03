@@ -7,7 +7,7 @@ import { FavoriteContext } from "../../context/favoriteContext";
 
 function Favorites() {
   const { favorites, removeFromFavorites } = useContext(FavoriteContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const isLoggedin = localStorage.getItem("login") === "true";
   useEffect(() => {
@@ -19,15 +19,15 @@ function Favorites() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
       <Header />
-      <div className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         {favorites.length > 0 ? (
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <section className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-3xl font-semibold mb-4 text-gray-800">
               Produtos Favoritos
             </h2>
             <div className="space-y-4">
               {favorites.map((product) => (
-                <div
+                <article
                   key={product.id}
                   className="flex flex-col md:flex-row items-center justify-between bg-gray-50 p-4 rounded-md shadow-sm"
                 >
@@ -50,14 +50,14 @@ function Favorites() {
                     className="text-gray-600 cursor-pointer hover:text-red-800"
                     onClick={() => removeFromFavorites(product.id)}
                   />
-                </div>
+                </article>
               ))}
             </div>
-          </div>
+          </section>
         ) : (
           <p className="text-center text-gray-600">Nenhum produto favoritado</p>
         )}
-      </div>
+      </main>
       <Footer />
     </div>
   );

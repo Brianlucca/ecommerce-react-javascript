@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router";
-import signUpValidationSchema from "../../validation/signUpValidation"
 import ImgForm from "../../assets/image/image-form.jpeg";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import signUpValidationSchema from "../../validation/signUpValidation";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -25,15 +25,15 @@ function SignUp() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <div className="flex flex-1">
-        <div className="hidden lg:block lg:w-1/2">
+      <main className="flex flex-1">
+        <aside className="hidden lg:block lg:w-1/2">
           <img
             src={ImgForm}
             className="h-full w-full object-cover"
             alt="Sign Up"
           />
-        </div>
-        <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        </aside>
+        <section className="w-full lg:w-1/2 flex items-center justify-center p-8">
           <div className="w-full max-w-md">
             <h2 className="font-medium text-4xl mb-4">Crie sua conta</h2>
             <p className="mb-6">Digite seus dados abaixo</p>
@@ -124,8 +124,8 @@ function SignUp() {
               </div>
             </form>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );
