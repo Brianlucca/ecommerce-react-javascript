@@ -32,47 +32,52 @@ function SearchResults() {
   return (
     <div className="bg-gray-300">
       <Header />
-      <div className="mt-10 m-5 flex justify-center ">
-        <p className="text-2xl font-semibold">{searchTerm.toUpperCase()}</p>
-      </div>
-      <div className="flex justify-center flex-wrap p-5 m-10 bg-white border rounded-xl">
-        {loading ? (
-          <p>Carregando resultados...</p>
-        ) : (
-          searchResults.map((result) => (
-            <Link to={`/${result.title}/${result.id}`}>
-              <div key={result.id} className="relative m-2">
-                <div className="h-56 flex justify-center items-center rounded-md">
-                  <img
-                    src={result.thumbnail}
-                    alt={result.title}
-                    title={result.title}
-                    className="w-32 h-auto object-cover"
-                  />
-                </div>
-                {result.shipping.free_shipping === true && (
-                  <div className="absolute top-0 left-0 bg-green-500 px-2 py-1 rounded-sm m-2">
-                    <p className="text-xs font-medium text-white">
-                      Frete Grátis
-                    </p>
+      <main>
+        <header className="mt-10 m-5 flex justify-center">
+          <h1 className="text-2xl font-semibold">{searchTerm.toUpperCase()}</h1>
+        </header>
+        <section
+          aria-label={`Resultados de pesquisa para ${searchTerm}`}
+          className="flex justify-center flex-wrap p-5 m-10 bg-white border rounded-xl"
+        >
+          {loading ? (
+            <p>Carregando resultados...</p>
+          ) : (
+            searchResults.map((result) => (
+              <Link to={`/${result.title}/${result.id}`} key={result.id}>
+                <article className="relative m-2">
+                  <div className="h-56 flex justify-center items-center rounded-md">
+                    <img
+                      src={result.thumbnail}
+                      alt={result.title}
+                      title={result.title}
+                      className="w-32 h-auto object-cover"
+                    />
                   </div>
-                )}
-                <div className="p-2">
-                  <p className="text-gray-800 font-semibold w-60">
-                    {result.title}
-                  </p>
-                  <div className="mt-2">
-                    <p className="text-gray-800 font-bold">{`R$ ${result.price}`}</p>
-                    {result && result.installments && (
-                      <p className="text-green-700 font-medium text-sm">{`em ${result.installments.quantity}x  R$ ${result.installments.amount}`}</p>
-                    )}
+                  {result.shipping.free_shipping === true && (
+                    <div className="absolute top-0 left-0 bg-green-500 px-2 py-1 rounded-sm m-2">
+                      <p className="text-xs font-medium text-white">
+                        Frete Grátis
+                      </p>
+                    </div>
+                  )}
+                  <div className="p-2">
+                    <h2 className="text-gray-800 font-semibold w-60">
+                      {result.title}
+                    </h2>
+                    <div className="mt-2">
+                      <p className="text-gray-800 font-bold">{`R$ ${result.price}`}</p>
+                      {result.installments && (
+                        <p className="text-green-700 font-medium text-sm">{`em ${result.installments.quantity}x R$ ${result.installments.amount}`}</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-          ))
-        )}
-      </div>
+                </article>
+              </Link>
+            ))
+          )}
+        </section>
+      </main>
       <Footer />
     </div>
   );

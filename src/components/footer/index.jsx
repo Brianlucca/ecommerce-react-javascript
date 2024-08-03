@@ -11,56 +11,83 @@ function Footer() {
           <h2 className="font-bold text-xl">Codex Space</h2>
           <h3 className="font-medium text-lg">Se inscreva</h3>
         </div>
+
         <div className="text-center md:text-left">
           <h2 className="font-medium text-xl mb-4">Suporte</h2>
-          <p>Brasil</p>
-          <p>emailcodex@gmail.com</p>
+          <address>
+            <p>Brasil</p>
+            <p>emailcodex@gmail.com</p>
+          </address>
         </div>
-        <div className="text-center md:text-left">
+
+        <nav aria-label="Conta" className="text-center md:text-left">
           <h3 className="font-medium text-xl mb-4">Conta</h3>
-          <p
-            className="cursor-pointer hover:underline"
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            Logar / Registar
-          </p>
-          <p
-            className="cursor-pointer hover:underline"
-            onClick={() => {
-              navigate("/cartproducts");
-            }}
-          >
-            Carrinho
-          </p>
-          <p
-            className="cursor-pointer hover:underline"
-            onClick={() => {
-              navigate("/favorites");
-            }}
-          >
-            Lista de Desejo
-          </p>
-          <p>Minha conta</p>
-        </div>
-        <div className="text-center md:text-left">
+          <ul>
+            <li>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Logar / Registrar
+              </p>
+            </li>
+            <li>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  navigate("/cartproducts");
+                }}
+              >
+                Carrinho
+              </p>
+            </li>
+            <li>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  navigate("/favorites");
+                }}
+              >
+                Lista de Desejo
+              </p>
+            </li>
+            <li>Minha conta</li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Links rápidos" className="text-center md:text-left">
           <h3 className="font-medium text-xl mb-4">Links rápidos</h3>
-          <p
-            className="cursor-pointer hover:underline"
-            onClick={() => {
-              navigate("/about");
-            }}
-          >
-            Sobre o projeto
-          </p>
-          <p>Politica de Privacidade</p>
-          <p>Termo de Uso</p>
-          <p>FAQ</p>
-        </div>
+          <ul>
+            <li>
+              <a href="https://www.mercadolivre.com.br/" target="_blank" className="cursor-pointer hover:underline">
+                Site Oficial
+              </a>
+            </li>
+            <li>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  navigate("/about");
+                }}
+              >
+                Sobre o Projeto
+              </p>
+            </li>
+            <li>Política de Privacidade</li>
+            <li>Termo de Uso</li>
+            <li>FAQ</li>
+          </ul>
+        </nav>
+
         <div className="text-center md:text-left">
           <h3 className="font-medium text-xl mb-4">Participe</h3>
-          <img src={QrCodeDiscord} className="w-22 h-20 mx-auto md:mx-0" />
+          <img
+            src={QrCodeDiscord}
+            alt="QRCode do Discord"
+            className="w-22 h-20 mx-auto md:mx-0"
+          />
         </div>
       </div>
       <div className="flex justify-center bg-gray-700 p-2">

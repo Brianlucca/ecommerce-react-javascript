@@ -14,6 +14,11 @@ const Slideshow = () => {
       src: "https://conteudo.imguol.com.br/c/especiais/start/2020/xbox-series/capa-a.jpg",
       alt: "Slide 2",
     },
+    {
+      id: 3,
+      src: "https://th.bing.com/th/id/R.0276eee266574cae37fed0584cdfa652?rik=CrKTae%2fHeYiycg&pid=ImgRaw&r=0",
+      alt: "Slide 3",
+    },
   ];
 
   useEffect(() => {
@@ -30,10 +35,10 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="mx-auto">
+    <section className="mx-auto" aria-label="Slideshow" role="region">
       <div className="relative h-96 w-full">
         {slides.map((slide, index) => (
-          <div
+          <figure
             key={slide.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
               slideIndex === index + 1 ? "opacity-100" : "opacity-0"
@@ -44,7 +49,7 @@ const Slideshow = () => {
               src={slide.src}
               alt={slide.alt}
             />
-          </div>
+          </figure>
         ))}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex space-x-2">
           {slides.map((slide, index) => (
@@ -54,11 +59,12 @@ const Slideshow = () => {
                 slideIndex === index + 1 ? "bg-gray-800" : ""
               }`}
               onClick={() => currentSlide(index + 1)}
+              aria-label={`Slide ${index + 1}`}
             ></button>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

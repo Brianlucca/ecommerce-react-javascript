@@ -20,16 +20,24 @@ function LightningProducts() {
   }, []);
 
   return (
-    <div>
-      <div className="ml-12 pr-1 mt-10">
-        <p className="text-base mb-3 text-gray-800 font-semibold">Promoção</p>
+    <section aria-labelledby="lightning-deals">
+      <header className="ml-12 pr-1 mt-10">
+        <h2
+          id="lightning-deals"
+          className="text-base mb-3 text-gray-800 font-semibold"
+        >
+          Promoção
+        </h2>
         <p className="text-4xl font-bold text-gray-800">Promoção Relâmpago</p>
-      </div>
+      </header>
       <div className="flex justify-center p-5 m-10 shadow-sm bg-white border rounded-xl">
         <Carousel>
           {products.map((product) => (
-            <div key={product.id} className="flex justify-center p-4">
-              <Link to={`/${product.title}/${product.id}`} className="block w-full">
+            <article key={product.id} className="flex justify-center p-4">
+              <Link
+                to={`/${product.title}/${product.id}`}
+                className="block w-full"
+              >
                 <div className="relative rounded-md shadow-md p-4 m-5">
                   <div className="h-56 flex justify-center items-center rounded-md mb-4">
                     <img
@@ -39,13 +47,18 @@ function LightningProducts() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  {product.shipping && product.shipping.free_shipping === true && (
-                    <div className="absolute top-0 left-0 bg-green-500 px-2 py-1 rounded-sm m-2">
-                      <p className="text-xs font-medium text-white">Frete Grátis</p>
-                    </div>
-                  )}
+                  {product.shipping &&
+                    product.shipping.free_shipping === true && (
+                      <div className="absolute top-0 left-0 bg-green-500 px-2 py-1 rounded-sm m-2">
+                        <p className="text-xs font-medium text-white">
+                          Frete Grátis
+                        </p>
+                      </div>
+                    )}
                   <div className="p-2 text-center">
-                    <p className="text-gray-700 font-semibold">{product.title}</p>
+                    <h3 className="text-gray-700 font-semibold">
+                      {product.title}
+                    </h3>
                     <div className="mt-2">
                       <p className="text-gray-800 font-bold">{`R$ ${product.price}`}</p>
                       {product.installments && (
@@ -55,11 +68,11 @@ function LightningProducts() {
                   </div>
                 </div>
               </Link>
-            </div>
+            </article>
           ))}
         </Carousel>
       </div>
-    </div>
+    </section>
   );
 }
 
