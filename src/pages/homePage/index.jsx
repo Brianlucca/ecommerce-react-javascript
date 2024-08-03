@@ -1,21 +1,21 @@
-import Header from "../../components/header/";
-import Slideshow from "../../components/slideShow";
-import LightningProducts from "../../components/lightningProducts";
-import Footer from "../../components/footer";
 import Categories from "../../components/categories";
+import Footer from "../../components/footer";
+import Header from "../../components/header/";
+import LightningProducts from "../../components/lightningProducts";
 import Products from "../../components/products";
+import Slideshow from "../../components/slideShow";
 
 function HomePage() {
   return (
-    <div>
-      <div className="bg-gray-300">
-        <Header />
+    <div className="bg-gray-300">
+      <Header />
+      <main>
         <Slideshow />
         <LightningProducts />
         <Categories />
         <Products />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }
