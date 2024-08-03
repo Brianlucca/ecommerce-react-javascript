@@ -76,12 +76,12 @@ function ProductDetails() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-300">
       <Header />
-      <div className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8">
         {loading ? (
           <p className="text-center text-gray-600">Carregando...</p>
         ) : product ? (
-          <div className="flex flex-col lg:flex-row items-start gap-8 bg-white p-6 rounded-lg shadow-lg">
-            <div className="lg:w-1/2 flex flex-col items-center">
+          <article className="flex flex-col lg:flex-row items-start gap-8 bg-white p-6 rounded-lg shadow-lg">
+            <section className="lg:w-1/2 flex flex-col items-center">
               <div className="w-full flex justify-center">
                 <img
                   className="max-w-full h-96 object-contain rounded-md"
@@ -101,20 +101,20 @@ function ProductDetails() {
                     />
                   ))}
               </div>
-            </div>
-            <div className="lg:w-1/2 flex-wrap">
-              <Share
-                className="text-gray-600 cursor-pointer hover:text-red-800 w-6 m-1 lg:w-6 lg:h-6 md:w-6 md:h-6"
-                onClick={handleShare}
-              />
-              <h2 className="text-2xl  lg:text-3xl font-semibold mb-4 text-gray-800">
-                {product.title}
-              </h2>
-              <div>
+            </section>
+            <section className="lg:w-1/2 flex-wrap">
+              <header>
+                <Share
+                  className="text-gray-600 cursor-pointer hover:text-red-800 w-6 m-1 lg:w-6 lg:h-6 md:w-6 md:h-6"
+                  onClick={handleShare}
+                />
+                <h2 className="text-2xl  lg:text-3xl font-semibold mb-4 text-gray-800">
+                  {product.title}
+                </h2>
                 <p className="text-2xl mb-4 text-gray-800 font-bold">
                   R$ {product.price}
                 </p>
-              </div>
+              </header>
               {product.initial_quantity && (
                 <p className="text-green-700 font-medium text-sm mb-2">{`Em estoque: ${product.initial_quantity} produtos`}</p>
               )}
@@ -162,10 +162,10 @@ function ProductDetails() {
                   Frete Grátis
                 </div>
               )}
-              <div className=" border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
-                <p className="font-medium mb-2 text-gray-800">
+              <section className=" border border-gray-100 max-h-48 overflow-y-auto whitespace-normal p-4 mt-4 rounded-lg shadow-lg bg-gray-50">
+                <h3 className="font-medium mb-2 text-gray-800">
                   O que você precisa saber sobre o produto:
-                </p>
+                </h3>
                 {product.attributes && product.attributes.length > 0 && (
                   <ul className="space-y-1">
                     {product.attributes.map((attribute, index) => (
@@ -178,13 +178,13 @@ function ProductDetails() {
                     ))}
                   </ul>
                 )}
-              </div>
-            </div>
-          </div>
+              </section>
+            </section>
+          </article>
         ) : (
           <p className="text-center text-gray-600">Produto não encontrado</p>
         )}
-      </div>
+      </main>
       <LightningProducts />
       <Footer />
     </div>

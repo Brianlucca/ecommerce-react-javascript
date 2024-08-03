@@ -6,9 +6,11 @@ function About() {
   return (
     <div>
       <Header />
-      <div className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-        <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-4 text-gray-600">Sobre o Projeto</h1>
+      <main className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+        <section className="bg-white shadow-lg rounded-lg p-6 max-w-4xl">
+          <h1 className="text-3xl font-bold mb-4 text-gray-600">
+            Sobre o Projeto
+          </h1>
           <p className="text-lg mb-4">
             Projeto feito para fins de estudo, sem intuito de retorno
             financeiro. O site retorna apenas produtos da API do Mercado Livre.
@@ -45,8 +47,8 @@ function About() {
               <p>Ruan Brito</p>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );
