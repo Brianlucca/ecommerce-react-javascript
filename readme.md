@@ -10,3 +10,10 @@ Layout Responsivo: Adaptável a diferentes dispositivos e tamanhos de tela.
 Interface Visual Atraente: Design moderno e cativante para melhorar a experiência do usuário.
 Navegação Intuitiva: Facilita a localização de produtos e a conclusão de compras.
 Botões de Call-to-Action Claros: Incentivam o usuário a realizar ações desejadas, como adicionar ao carrinho ou finalizar a compra.
+
+
+### Projeto
+https://ecommerce-react-javascript.vercel.app/
+
+### Codex Space
+https://www.codexspace.com.br/
